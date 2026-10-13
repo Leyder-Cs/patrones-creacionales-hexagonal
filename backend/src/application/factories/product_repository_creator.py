@@ -21,3 +21,8 @@ class ProductRepositoryCreator(ABC):
     def listar_productos(self):
         repositorio = self.crear_repositorio()  # llama a nuestro factory method
         return ProductService.listar(repositorio)  # Ahora con esto listamos
+
+    # Flujo para guardar, igual que listar: el creador no sabe qué base de datos usa
+    def guardar_producto(self, producto):
+        repositorio = self.crear_repositorio()  # llama a nuestro factory method
+        return ProductService.guardar(repositorio, producto)

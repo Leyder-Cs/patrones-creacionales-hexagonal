@@ -1,18 +1,24 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { fetchProductos } from "./actions/products.actions"; // ajusta a tu archivo
+import ProductForm from "./components/ProductForm";
 import type { ProductApi } from "./interfaces/product.interface";
 
 function App() {
   const [productos, setProductos] = useState<ProductApi[]>([]);
 
-  useEffect(() => {
+  const cargarProductos = useCallback(() => {
     fetchProductos()
       .then((data) => setProductos(data)) // aquí "llega" el array
       .catch((e) => console.error(e));
   }, []);
 
+  useEffect(() => {
+    cargarProductos();
+  }, [cargarProductos]);
+
   return (
-  <div className="max-w-4xl mx-auto p-8">
+  <div className="max-w-4xl mx-auto p-8 space-y-8">
+    <ProductForm onCreated={cargarProductos} />
     <div className="rounded-lg border border-zinc-700 bg-zinc-900/60 overflow-hidden">
       <table className="w-full text-left border-collapse">
         <thead>
