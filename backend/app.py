@@ -1,6 +1,7 @@
 # Importa la clase principal de Flask.
 # Con ella se crea la aplicación web.
 from flask import Flask
+from flask_cors import CORS
 
 # Importa el blueprint definido en product_controller.py.
 # Ese blueprint contiene las rutas de productos, por ejemplo:
@@ -22,8 +23,8 @@ from src.infrastructure.web.controllers.product_controller import dp_products
 # Es decir, Flask no buscará automáticamente una carpeta "static"
 # para CSS, JavaScript o imágenes.
 app = Flask(__name__, template_folder="src/views/templates", static_folder=None)
-
-
+# Permite que el frontend en el puerto 5173 le haga peticiones a
+CORS(app, origins=["http://localhost:5173"])
 # Registra el blueprint de productos dentro de la aplicación.
 #
 # dp_products fue creado en product_controller.py:
@@ -47,3 +48,6 @@ if __name__ == "__main__":
     # - Reinicia automáticamente el servidor cuando cambias el código.
     # No se recomienda usarlo en producción.
     app.run(debug=True)
+
+
+    
