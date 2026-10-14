@@ -1,13 +1,47 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>frontend</title>
+    <meta name="description" content="Proyecto académico de patrones de diseño creacionales con arquitectura hexagonal, React y Flask." />
+    <title>Patrones de Diseño — Arquitectura Hexagonal</title>
+    <link rel="stylesheet" href="/src/menu.css" />
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <main class="menu-page">
+      <header class="menu-header">
+        <span class="menu-eyebrow">PROGRAMACIÓN AVANZADA · PROYECTO ACADÉMICO</span>
+        <h1>Patrones de Diseño <span>— Arquitectura Hexagonal</span></h1>
+        <p>Explora patrones creacionales aplicados a la construcción de productos y al acceso a datos. Un proyecto con React y Flask que separa el dominio de sus implementaciones.</p>
+        <div class="menu-tags" aria-label="Tecnologías del proyecto">
+          <span>React + Flask</span><span>MySQL / MongoDB</span><span>Arquitectura hexagonal</span>
+        </div>
+      </header>
+
+      <nav aria-labelledby="patterns-title">
+        <div class="menu-section-heading">
+          <h2 id="patterns-title">Explora los patrones</h2>
+          <span>Patrones creacionales</span>
+        </div>
+        <div class="pattern-grid">
+          <!-- Agregar una tarjeta con su enlace para incorporar futuros patrones. -->
+          <article class="pattern-card">
+            <span class="pattern-number" aria-hidden="true">01</span>
+            <h3>Builder y Factory Method</h3>
+            <p>Construye productos paso a paso a partir de su nombre, precio y descripción.</p>
+            <span class="pattern-detail">Construcción de productos</span>
+            <a class="pattern-link" href="/builder.html#builder">Explorar Builder <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="pattern-card">
+            <span class="pattern-number" aria-hidden="true">02</span>
+            <h3>Abstract Factory</h3>
+            <p>Consulta productos y pedidos con familias de repositorios para MySQL y MongoDB.</p>
+            <span class="pattern-detail">Familias de repositorios</span>
+            <a class="pattern-link" href="/abstract-factory.html">Explorar Abstract Factory <span aria-hidden="true">→</span></a>
+          </article>
+        </div>
+      </nav>
+      <footer class="menu-footer">Un mismo dominio, distintas formas de construir y acceder a los datos.</footer>
+    </main>
   </body>
 </html>

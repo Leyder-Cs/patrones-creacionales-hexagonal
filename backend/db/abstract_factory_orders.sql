@@ -1,0 +1,8 @@
+USE productosdb;
+CREATE TABLE IF NOT EXISTS orders (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  customer VARCHAR(100) NOT NULL,
+  total DECIMAL(12,2) NOT NULL
+);
+INSERT INTO orders (customer, total)
+SELECT 'Ana', 95000 WHERE NOT EXISTS (SELECT 1 FROM orders);

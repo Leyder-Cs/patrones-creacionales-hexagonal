@@ -2,6 +2,7 @@
 # Con ella se crea la aplicación web.
 from flask import Flask
 from flask_cors import CORS
+from src.abstract_factory.web.controller import bp_abstract_factory
 
 # Importa el blueprint definido en product_controller.py.
 # Ese blueprint contiene las rutas de productos, por ejemplo:
@@ -35,6 +36,7 @@ CORS(app, origins=["http://localhost:5173"])
 # @dp_products.route("/")
 # URL final: /productos/
 app.register_blueprint(dp_products)
+app.register_blueprint(bp_abstract_factory)
 # Esta condición verifica que este archivo se esté ejecutando
 # directamente con: python app.py
 #
