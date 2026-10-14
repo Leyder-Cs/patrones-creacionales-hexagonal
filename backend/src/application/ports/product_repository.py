@@ -18,3 +18,7 @@ class ProductRepository:
     def listar():  # Es una obligación este metodo para las clases hijas
         # Si la clase hija no lo implementa este debe lanzar este error
         raise NotImplementedError("El repositorio hijo debe implementar listar()")
+
+    @staticmethod
+    def guardar(datos):  # Obligación para las clases hijas
+        raise NotImplementedError("El repositorio hijo debe implementar guardar(datos)")

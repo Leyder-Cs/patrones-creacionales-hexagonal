@@ -24,5 +24,12 @@ class ProductRepositoryMongoDB(
             data = list(db["products"].find({}, {"_id": 0}))
             return data  # retornamos la data
 
+    @staticmethod
+    def guardar(datos):  # Inserta un producto nuevo en la colección
+        with conectar() as cliente:
+            db = cliente[DATABASE]
+            db["products"].insert_one(dict(datos))
+            return dict(datos)
+
 
 # Todo esto va a retornar la data, esta data se va a ir a service

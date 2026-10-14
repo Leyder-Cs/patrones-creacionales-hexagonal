@@ -4,3 +4,16 @@ export interface ProductApi {
   price: number | string;
   description: string;
 }
+
+// Lo que envía el formulario al endpoint POST /productos/
+export interface ProductInput {
+  name: string;
+  price: number;
+  description: string;
+}
+
+// Respuesta del Builder cuando construye el producto correctamente
+export interface ProductCreatedResponse {
+  mensaje: string;
+  producto: ProductApi;
+}

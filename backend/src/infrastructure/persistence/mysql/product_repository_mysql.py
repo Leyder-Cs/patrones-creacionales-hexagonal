@@ -25,4 +25,16 @@ class ProductRepositoryMySQL(
                 )  # guardamos lo de la consulta en data y que guarde adsolutamente todo
                 return data  # retornamos la data
 
+    @staticmethod  # es el mismo decorador que se uso en el puerto
+    def guardar(datos):  # Inserta un producto nuevo en la tabla
+        with conectar() as conexion:
+            with conexion.cursor() as cursor:
+                cursor.execute(
+                    "INSERT INTO products (name, price, description) VALUES (%s, %s, %s)",
+                    (datos["name"], datos["price"], datos["description"]),
+                )
+                nuevo_id = cursor.lastrowid
+            conexion.commit()
+        return {**datos, "id": nuevo_id}
+
 # Todo esto va a retornar la data, esta data se va a ir a service.

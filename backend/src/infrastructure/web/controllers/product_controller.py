@@ -1,8 +1,9 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 
 from src.application.factories.product_repository_creator import (
     ProductRepositoryCreator,
 )
+from src.application.service.product_service import ProductService
 from src.infrastructure.persistence.mysql.product_repository_mysql_creator import (
     ProductRepositoryMySQLCreator,
 )
@@ -21,3 +22,22 @@ def listar():
 
     productos = creator.listar_productos()
     return jsonify(productos)
+
+
+@dp_products.route("/", methods=["POST"])
+def crear_producto():
+    data = request.get_json(silent=True) or {}
+
+    try:
+        producto = ProductService.construir_producto(data)
+
+        creator: ProductRepositoryCreator = ProductRepositoryMongoDBCreator()
+        guardado = creator.guardar_producto(producto)
+
+        return jsonify({
+            "mensaje": "Producto construido y guardado correctamente",
+            "producto": guardado,
+        }), 201
+
+    except ValueError as error:
+        return jsonify({"error": str(error)}), 400
