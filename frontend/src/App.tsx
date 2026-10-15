@@ -14,12 +14,27 @@ function App() {
 
   useEffect(() => {
     cargarProductos();
+    document.getElementById(window.location.hash.slice(1))?.scrollIntoView();
   }, [cargarProductos]);
 
   return (
-  <div className="max-w-4xl mx-auto p-8 space-y-8">
-    <ProductForm onCreated={cargarProductos} />
-    <div className="rounded-lg border border-zinc-700 bg-zinc-900/60 overflow-hidden">
+  <main className="max-w-4xl mx-auto p-4 sm:p-8 space-y-8">
+    <nav aria-label="Navegación de patrones">
+      <a className="back-to-menu" href="/">← Volver al menú principal</a>
+      <div className="flex flex-wrap gap-4 text-sm text-violet-300">
+        <a className="inline-flex min-h-11 items-center underline underline-offset-4" href="#builder">Builder</a>
+        <a className="inline-flex min-h-11 items-center underline underline-offset-4" href="#factory-method">Factory Method</a>
+      </div>
+    </nav>
+    <section id="builder" aria-label="Builder">
+      <ProductForm onCreated={cargarProductos} />
+    </section>
+    <section id="factory-method" aria-labelledby="factory-method-title" className="space-y-4">
+      <div>
+        <h2 id="factory-method-title" className="text-xl font-semibold">Factory Method</h2>
+        <p className="mt-1 text-sm text-zinc-400">Listado de productos mediante repositorios de acceso a datos.</p>
+      </div>
+    <div className="rounded-lg border border-zinc-700 bg-zinc-900/60 overflow-x-auto">
       <table className="w-full text-left border-collapse">
         <thead>
           <tr className="border-b border-zinc-700 bg-zinc-900 text-sm text-zinc-400">
@@ -44,7 +59,8 @@ function App() {
         </tbody>
       </table>
     </div>
-  </div>
+    </section>
+  </main>
 );
 }
 
