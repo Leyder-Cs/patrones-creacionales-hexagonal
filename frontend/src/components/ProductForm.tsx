@@ -3,11 +3,7 @@ import { isAxiosError } from "axios";
 import { createProducto } from "../actions/products.actions";
 import type { ProductApi } from "../interfaces/product.interface";
 
-interface ProductFormProps {
-  onCreated: () => void;
-}
-
-function ProductForm({ onCreated }: ProductFormProps) {
+function ProductForm() {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
@@ -35,7 +31,6 @@ function ProductForm({ onCreated }: ProductFormProps) {
       setName("");
       setPrice("");
       setDescription("");
-      onCreated();
     } catch (e) {
       if (isAxiosError(e) && e.response?.data?.error) {
         setError(e.response.data.error);

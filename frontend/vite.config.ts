@@ -16,7 +16,9 @@ export default defineConfig({
       input: {
         menu: fileURLToPath(new URL('./index.html', import.meta.url)),
         builder: fileURLToPath(new URL('./builder.html', import.meta.url)),
+        factoryMethod: fileURLToPath(new URL('./factory-method.html', import.meta.url)),
         abstractFactory: fileURLToPath(new URL('./abstract-factory.html', import.meta.url)),
+        visualizador: fileURLToPath(new URL('./visualizador.html', import.meta.url)),
       },
     },
   },
